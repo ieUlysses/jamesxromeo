@@ -12,7 +12,7 @@ import { SearchBar, SearchContainer, SearchIcon, Grid, Container, DisplayMoreTil
 const DataProvider = () => {
     //holds array of users
     const [users, setUsers] = useState([])
-    const [loadmore, setLoadMore] = useState(16)
+    const [loadmore, setLoadMore] = useState(32)
     //holds search term
     const [search, setSearch] = useState("")
     //following two control the search bar, if hovered: reveal(expand container + search input)
@@ -24,7 +24,7 @@ const DataProvider = () => {
     const reveal = hoverState || focus
 
     const Showmore = () => {
-        setLoadMore(32)
+        setLoadMore(56)
     }
 
     const handleSearch = (e) => {
