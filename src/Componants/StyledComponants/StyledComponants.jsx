@@ -220,7 +220,7 @@ position:fixed; //needed for Modal
 justify-content:center;
 align-items:center;
 
-/* Top,bottom, left.right set the distance between the div and the display size  https://developer.mozilla.org/en-US/docs/Web/CSS/right*/
+/* Top,bottom, left, and right set the distance bwetwwn the corners of the div and the parent */
 top:0;
 bottom:0;
 left:0;
@@ -319,21 +319,27 @@ flex-direction:column;
 align-items:center;
 justify-content:space-evenly;
 border-radius:5px;
-width: 320px;
+width: 45vw;
 height:max-content;
 background-color:darkslategray;
-align-self:center;
+position:absolute;
+top:25%;
+bottom:25%;
+right:25%;
+left:25%;
 `
 
 export const AboutHeader = styled.span`
 font-family:'Playfair Display SC';
-font-size:1.2em;
+font-size:2.2em;
 color:white;
 `
 export const AboutText = styled.p`
 font-family:'Roboto';
-font-size:2vw;
+font-size:1.5em;
 line-height:1;
+
+
 `
 
 /* End of About Note */
