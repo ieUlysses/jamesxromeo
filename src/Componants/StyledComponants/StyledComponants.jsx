@@ -87,7 +87,7 @@ export const Grid = styled.div`
     gap:7px;
     width:max-content;
     height:100%;
-    position:relative;
+    //position:relative; /* Not needed with Portal */
     grid-template-columns: repeat(3, 1fr);
     /* Media queeries */
 
@@ -215,11 +215,17 @@ export const CardBtm = styled.div`
 export const Background = styled.div`
 z-index:10000;
 display:flex;
-position:absolute;
+//position:absolute; /* Not needed with Portal */
+position:fixed; //needed for Modal
 justify-content:center;
 align-items:center;
-width:100%;
-height:75vh;
+
+/* Top,bottom, left.right set the distance between the div and the display size  https://developer.mozilla.org/en-US/docs/Web/CSS/right*/
+top:0;
+bottom:0;
+left:0;
+right:0;
+
 border-radius:5px;
 cursor: pointer;
 background-image:radial-gradient(  #000000, #292929, #393939 ,#292929 );

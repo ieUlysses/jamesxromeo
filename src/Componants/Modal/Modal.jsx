@@ -1,6 +1,9 @@
 
 import { React, useRef } from "react"
 
+//react dom contains the create portal method
+import ReactDOM from "react-dom"
+
 import { Background, ModalCloseIcon, ModalContent, ModalHeadline, ModalImg, ModalText, ModalWrapper, ID } from "../StyledComponants/StyledComponants";
 
 export const Modal = ({ showModal, setShowModal, info, picture, date, name }) => {
@@ -49,7 +52,7 @@ export const Modal = ({ showModal, setShowModal, info, picture, date, name }) =>
             break;
     }
 
-    return (
+    return ReactDOM.createPortal(
         <>
 
             {showModal ? (
@@ -74,7 +77,7 @@ export const Modal = ({ showModal, setShowModal, info, picture, date, name }) =>
                     </ModalWrapper>
                 </Background>) : (null)}
 
-        </>
+        </>, document.getElementById("modal")
     )
 }
 
