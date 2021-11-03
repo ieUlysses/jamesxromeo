@@ -8,9 +8,9 @@ import { DateStatus, OfflineStatus, OnlineStatus, CardImg, CardBody, StyledHeade
 import { Modal } from "../Modal/Modal";
 import moment from "moment";
 
-const ProfileCard = ({ user, lastLogin }) => {
+const ProfileCard = ({ user }) => {
     console.log(lastLogin)
-    const { picture, name, id, online_status } = user
+    const { picture, name, id, online_status, lastLogin } = user
     //handles the issue with 2 missing picture entries(thanks Romeo x)
 
     const pictures = picture ? (
@@ -41,7 +41,7 @@ const ProfileCard = ({ user, lastLogin }) => {
 
     const [detailedInfo, setDetailedInfo] = useState([])
     //second api call for detailed info based on id
-    const uri = `http://localhost:3000/api/profiles?ids=${id}`
+    const uri = `/api/profiles?ids=${id}`
     useEffect(() => {
         const fetchData = async () => {
             const info = await axios.get(uri)
