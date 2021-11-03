@@ -6,9 +6,6 @@ import ProfileCard from "../Componants/ProfileCard/ProfileCard";
 //custom styled componants 
 import { SearchBar, SearchContainer, SearchIcon, Grid, Container, DisplayMoreTile, ShowMoreIcon, StyledHeader } from "../Componants/StyledComponants/StyledComponants";
 
-
-
-
 const DataProvider = () => {
     //holds array of users
     const [users, setUsers] = useState([])
@@ -39,9 +36,8 @@ const DataProvider = () => {
     )
 
 
-
-
-    const url = `http://localhost:3000/api/search?length=${loadmore}`
+    //ammended for proxy addition in package.json
+    const url = `/api/search?length=${loadmore}`
     useEffect(() => {
         const fetchData = async () => {
             const user = await axios.get(url)
