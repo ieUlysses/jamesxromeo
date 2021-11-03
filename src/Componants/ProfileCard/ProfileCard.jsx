@@ -8,8 +8,8 @@ import { DateStatus, OfflineStatus, OnlineStatus, CardImg, CardBody, StyledHeade
 import { Modal } from "../Modal/Modal";
 import moment from "moment";
 
-const ProfileCard = ({ user, lastLogin }) => {
-    console.log(lastLogin)
+const ProfileCard = ({ user }) => {
+
     const { picture, name, id, online_status } = user
     //handles the issue with 2 missing picture entries(thanks Romeo x)
 
