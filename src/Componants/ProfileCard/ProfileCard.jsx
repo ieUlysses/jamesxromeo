@@ -10,7 +10,7 @@ import moment from "moment";
 
 const ProfileCard = ({ user }) => {
 
-    const { picture, name, id, online_status } = user
+    const { picture, name, id, online_status, last_login } = user
     //handles the issue with 2 missing picture entries(thanks Romeo x)
 
     const pictures = picture ? (
@@ -41,7 +41,7 @@ const ProfileCard = ({ user }) => {
 
     const [detailedInfo, setDetailedInfo] = useState([])
     //second api call for detailed info based on id
-    const uri = `http://localhost:3000/api/profiles?ids=${id}`
+    const uri = `/api/profiles?ids=${id}`
     useEffect(() => {
         const fetchData = async () => {
             const info = await axios.get(uri)
@@ -57,7 +57,7 @@ const ProfileCard = ({ user }) => {
         setShowModal(prev => !prev)
     }
     //creates a date string 
-    let date = moment(lastLogin).format("llll")
+    let date = moment(last_login).format("llll")
     console.log(date)
 
 
