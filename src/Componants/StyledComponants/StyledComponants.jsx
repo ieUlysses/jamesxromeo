@@ -72,6 +72,7 @@ font-family: 'Roboto';
     padding: 0 20px;
     appearance: none;   
     display:${(props) => (props.reveal ? "block" : "none")};
+
 `;
 
 export const SearchIcon = styled(Search)`

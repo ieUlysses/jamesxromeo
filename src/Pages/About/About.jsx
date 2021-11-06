@@ -1,11 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import NavigationBar from "../../Componants/NavigationBar/NavigationBar"
 import { AboutHeader, AboutNote, AboutText, Container } from "../../Componants/StyledComponants/StyledComponants"
 
 const About = () => {
 
     return (
         <>
+            <NavigationBar />
+
             <Container>
                 <AboutNote>
                     <AboutHeader>

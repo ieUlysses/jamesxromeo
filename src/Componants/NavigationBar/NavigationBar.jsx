@@ -20,7 +20,8 @@ const NavigationBar = () => {
                 </Burger>
                 <LinkContainer isOpen={isOpen}>
                     {links.map((link, index) => (
-                        <NavLink key={index} to={link.path} exact activeClassName="current">
+                        /* Following v6 R-R-D */
+                        <NavLink key={index} to={link.path} className={({ isActive }) => "nav-link" + (isActive ? " current" : "")} >
                             <li>{link.name}</li>
                         </NavLink>
                     ))}
@@ -30,6 +31,18 @@ const NavigationBar = () => {
         </>
     )
 }
+
+/* 
+(Notes:)
+React Router dom also effects styling of active tabs... new syntax requires a toggle function along with changing VlassName => className
+
+v5 syntax
+<NavLink key={index} to={link.path} exact:true activeClassName="current">
+    <li>{link.name}</li>
+    </NavLink> 
+                       
+*/
+
 
 /* This is kinda cool, maybe a little messy but if you have a lot of links, this would help  */
 const links = [
