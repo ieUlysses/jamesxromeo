@@ -41,7 +41,7 @@ const ProfileCard = ({ user }) => {
 
     const [detailedInfo, setDetailedInfo] = useState([])
     //second api call for detailed info based on id
-    const uri = `/api/profiles?ids=${id}`
+    const uri = `/api/profiles?ids=${id}`/* set static amount of profiles */
     useEffect(() => {
         const fetchData = async () => {
             const info = await axios.get(uri)

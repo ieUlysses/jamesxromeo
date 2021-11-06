@@ -1,10 +1,10 @@
 import { React, useEffect, useState, useRef } from "react";
 
 import axios from "axios";
-import ProfileCard from "../Componants/ProfileCard/ProfileCard";
+import ProfileCard from "../ProfileCard/ProfileCard";
 
 //custom styled componants 
-import { SearchBar, SearchContainer, SearchIcon, Grid, Container, DisplayMoreTile, ShowMoreIcon, StyledHeader } from "../Componants/StyledComponants/StyledComponants";
+import { SearchBar, SearchContainer, SearchIcon, Grid, Container, DisplayMoreTile, ShowMoreIcon, StyledHeader } from "../StyledComponants/StyledComponants";
 
 const DataProvider = () => {
     //holds array of users
