@@ -4,7 +4,7 @@ import axios from "axios";
 import ProfileCard from "../ProfileCard/ProfileCard";
 
 //custom styled componants 
-import { SearchBar, SearchContainer, SearchIcon, Grid, Container, DisplayMoreTile, ShowMoreIcon, StyledHeader } from "../StyledComponants/StyledComponants";
+import { SearchBar, SearchContainer, SearchIcon, Grid, DisplayMoreTile, ShowMoreIcon, } from "../StyledComponants/StyledComponants";
 
 const ProfileGrid = () => {
     //holds array of users
