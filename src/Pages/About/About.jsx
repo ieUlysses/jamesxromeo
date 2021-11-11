@@ -1,6 +1,8 @@
 import React from "react"
+
 import NavigationBar from "../../Componants/NavigationBar/NavigationBar"
 import { AboutHeader, AboutNote, AboutText, Container } from "../../Componants/StyledComponants/StyledComponants"
+
 
 const About = () => {
 
@@ -9,6 +11,8 @@ const About = () => {
             <NavigationBar />
 
             <Container>
+
+
                 <AboutNote>
                     <AboutHeader>
                         Thank you!

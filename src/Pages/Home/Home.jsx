@@ -5,6 +5,10 @@ import { ProfileGrid } from "../../Componants/ProfileGrid/ProfileGrid"
 
 
 const Home = () => {
+
+
+
+
     return (<>
         <NavigationBar />
         <Container>

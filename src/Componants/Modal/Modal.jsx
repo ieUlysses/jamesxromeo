@@ -1,28 +1,67 @@
 
-import { React, useRef } from "react"
-
+import { React, useRef, useContext } from "react"
+import Context from "../../Context/Context"
 //react dom contains the create portal method
 import ReactDOM from "react-dom"
 
 import { Background, ModalCloseIcon, ModalContent, ModalHeadline, ModalImg, ModalText, ModalWrapper, ID } from "../StyledComponants/StyledComponants";
+import { CommentsDollar } from "@styled-icons/fa-solid";
 
-export const Modal = ({ showModal, setShowModal, info, picture, date, name }) => {
+export const Modal = ({ picture, date, name, Id, filteredInfo }) => {
 
-    const { headline, personal, sexual, location, id } = info
+
+    const context = useContext(Context)
+    const { showModal, setShowModal, detailedInfo } = context
+
+
+    /* Modal has to be used with the Open Modal function plus the componant itself */
+    //const { location, id } = info
+    console.log(filteredInfo)/* If i try to destucture this I just get undefined */
+    console.log(name)/* In console this is correct but on the render..it refers back to the last user in the array */
+    // const { location } = info
+    //console.log(location.city)
+
+
+
+    /* The  Problem */
+
+    //  after addition of context the app has gone sour. infomaation in Profile grid is correct image, status and name are correct. somehow between profile grid and Modal something is wrong... the information in the modal refers back to the last user in the array... despite the fact that ion console this works fine( console shows information for every user.... not just the last)
+
+    //  The only time all of the information matches is when you search and there's only one hit (try "pollyrichards") ... 
+
+    //if feels as if the modal is being rendered 30 times and the last card just happens to be the last user in the array
+
+    //regardless if I attempt to map an array using.filter in the filtered info funbction or try to use .find and pass an object through as a prop and deconstruct it.... the render retuirns the wrong info
+
+
+
+
+
+    /* 
+        if (Id === id) {
+            console.log("yes")
+        } else {
+            console.log("no")
+        } */
+
+
+
+
+
 
     const modalRef = useRef()
-    console.log(info)
-
     const closeModal = (e) => {
         if (modalRef.current === e.target) {
             setShowModal(false)
         }
     }
 
-    /* DEcided to create a Bio for each profile, following switch case translates sexual orientation entry to a lowercase string and supplies a counterpart */
+    /* Decided to create a Bio for each profile, following switch case translates sexual orientation entry to a lowercase string and supplies a counterpart */
+
+
     let position = ""
     let counterpart = ""
-    switch (sexual.anal_position) {
+    /* switch (sexual.anal_position) {
         case "TOP_ONLY":
             position = "a top"
             counterpart = "bottoms"
@@ -50,7 +89,7 @@ export const Modal = ({ showModal, setShowModal, info, picture, date, name }) =>
             position = "a btm"
             counterpart = "tops"
             break;
-    }
+    } */
 
     return ReactDOM.createPortal(
         <>
@@ -61,16 +100,18 @@ export const Modal = ({ showModal, setShowModal, info, picture, date, name }) =>
                         <ModalImg src={picture} />
                         <ModalContent>
                             <ModalHeadline>
-                                "{headline}" (Cher) {/* Because Cher would say this...right? */}
+                                {name}
+
                             </ModalHeadline>
 
                             <ModalText>
-                                Hi there I'm {name}! I'm {personal.age} Years old and living in {location.city} which is {location.distance} km away I'm {position} looking for  {counterpart}.
+                                Hi there I'm "name" ! I'm  Years old and living in
+                                which is  km away I'm looking for .
                             </ModalText>
 
-                            {/* I'm not a fan of inline styles but this is an exception */}
-                            <ModalText style={{ textAlign: "center" }}>Last active {date}</ModalText>
-                            <ID>id:{id}</ID>
+
+                            <ModalText style={{ textAlign: "center" }}>Last active date: {date}</ModalText>
+                            <ID></ID>
                         </ModalContent>
 
                         <ModalCloseIcon aria-label="CloseModal" onClick={() => setShowModal(prev => !prev)} />

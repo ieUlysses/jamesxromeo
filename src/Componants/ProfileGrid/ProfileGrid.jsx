@@ -1,15 +1,21 @@
-import { React, useEffect, useState, useRef } from "react";
+import { React, useEffect, useState, useRef, useContext } from "react";
 
 import axios from "axios";
 import ProfileCard from "../ProfileCard/ProfileCard";
+import Context from "../../Context/Context";
+
 
 //custom styled componants 
 import { SearchBar, SearchContainer, SearchIcon, Grid, DisplayMoreTile, ShowMoreIcon, } from "../StyledComponants/StyledComponants";
 
 const ProfileGrid = () => {
+
+    const context = useContext(Context)
+    const { users, showmore } = context
+
     //holds array of users
-    const [users, setUsers] = useState([])
-    const [loadmore, setLoadMore] = useState(32)
+    /* const [users, setUsers] = useState([])
+    const [loadmore, setLoadMore] = useState(32) */
     //holds search term
     const [search, setSearch] = useState("")
     //following two control the search bar, if hovered: reveal(expand container + search input)
@@ -20,9 +26,9 @@ const ProfileGrid = () => {
 
     const reveal = hoverState || focus
 
-    const Showmore = () => {        /* Lowercase */
-        setLoadMore(56)
-    }
+    /*  const showmore = () => {       
+         setLoadMore(56)
+     } */
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -34,21 +40,6 @@ const ProfileGrid = () => {
     const matchUser = users.filter((user) =>
         user.name.toLowerCase().includes(search.toLowerCase())
     )
-
-
-    //ammended for proxy addition in package.json
-    const url = `/api/search?length=${loadmore}`
-    useEffect(() => {
-        const fetchData = async () => {
-            const user = await axios.get(url)
-            console.log(user.data.items)
-            setUsers(user.data.items)
-        }
-        fetchData();
-    }, [url])
-
-
-
 
     return (
         <>
@@ -64,10 +55,10 @@ const ProfileGrid = () => {
             </SearchContainer>
 
             <Grid>
-                {search ? (matchUser.map((user) => (<ProfileCard key={user.id} user={user} />)))
-                    : (users.map((user) => (<> <ProfileCard key={user.id} user={user} />  </>)))
+                {search ? (matchUser.map((user) => (<ProfileCard key={user.id} user={user} Id={user.id} />)))
+                    : (users.map((user) => (<> <ProfileCard key={user.id} user={user} Id={user.id} />  </>)))
                 }
-                <DisplayMoreTile onClick={Showmore}>
+                <DisplayMoreTile onClick={showmore}>
                     <ShowMoreIcon />
                     Load more
                 </DisplayMoreTile>
